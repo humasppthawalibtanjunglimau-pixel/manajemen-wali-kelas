@@ -1,1 +1,15 @@
+[
+  {"username": "admin", "password": "admin123", "role": "admin"},
+  {"username": "pimpinan", "password": "pimpinan123", "role": "pimpinan"},
+  {"username": "kepala1", "password": "kepala123", "role": "kepala"},
+  {"username": "walikelas1", "password": "wali123", "role": "wali"},
+  {"username": "walikelas2", "password": "wali123", "role": "wali"}
+  {"username": "walikelas3", "password": "wali123", "role": "wali"}
+  {"username": "walikelas4", "password": "wali123", "role": "wali"}
+  {"username": "walikelas5", "password": "wali123", "role": "wali"}
+  {"username": "walikelas6", "password": "wali123", "role": "wali"}
+  {"username": "walikelas7", "password": "wali123", "role": "wali"}
+  {"username": "walikelas8", "password": "wali123", "role": "wali"}
+  {"username": "guru1", "password": "guru123", "role": "guru"}
+]
 
