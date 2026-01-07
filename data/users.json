@@ -1,15 +1,54 @@
-[
-  {"username": "admin", "password": "admin123", "role": "admin"},
-  {"username": "pimpinan", "password": "pimpinan123", "role": "pimpinan"},
-  {"username": "kepala1", "password": "kepala123", "role": "kepala"},
-  {"username": "walikelas1", "password": "wali123", "role": "wali"},
-  {"username": "walikelas2", "password": "wali123", "role": "wali"}
-  {"username": "walikelas3", "password": "wali123", "role": "wali"}
-  {"username": "walikelas4", "password": "wali123", "role": "wali"}
-  {"username": "walikelas5", "password": "wali123", "role": "wali"}
-  {"username": "walikelas6", "password": "wali123", "role": "wali"}
-  {"username": "walikelas7", "password": "wali123", "role": "wali"}
-  {"username": "walikelas8", "password": "wali123", "role": "wali"}
-  {"username": "guru1", "password": "guru123", "role": "guru"}
-]
+document.addEventListener('DOMContentLoaded', function(){
 
+  // ===== Data User =====
+  const users = [
+    {username: "admin", password: "admin123", role: "admin"},
+    {username: "pimpinan", password: "pimpinan123", role: "pimpinan"},
+    {username: "kepala1", password: "kepala123", role: "kepala"},
+    {username: "walikelas1", password: "wali123", role: "wali"},
+    {username: "guru1", password: "guru123", role: "guru"}
+  ];
+
+  // ===== Login =====
+  const loginForm = document.getElementById('loginForm');
+  const errorEl = document.getElementById('error');
+
+  if(loginForm){
+    loginForm.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if(user){
+        localStorage.setItem('loggedUser', JSON.stringify(user));
+        window.location.href = 'index.html';
+      } else {
+        errorEl.textContent = 'Username atau password salah!';
+      }
+    });
+  }
+
+  // ===== Cek Login Dashboard =====
+  const user = JSON.parse(localStorage.getItem('loggedUser'));
+  if(user){
+    const usernameEl = document.getElementById('username');
+    if(usernameEl) usernameEl.textContent = user.username;
+  } else {
+    if(window.location.pathname.includes('index.html') || window.location.pathname.includes('santri.html')){
+      window.location.href = 'login.html';
+    }
+  }
+
+  // ===== Logout =====
+  const logoutBtn = document.getElementById('logoutBtn');
+  if(logoutBtn){
+    logoutBtn.addEventListener('click', function(){
+      localStorage.removeItem('loggedUser');
+      window.location.href = 'login.html';
+    });
+  }
+
+});
