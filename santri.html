@@ -29,61 +29,6 @@
     </table>
   </main>
 
-  <script>
-    let santri = [
-      {nama: "Ahmad", kelas: "10A"},
-      {nama: "Fatimah", kelas: "10B"},
-      {nama: "Ali", kelas: "11A"}
-    ];
-
-    const tbody = document.querySelector("#santriTable tbody");
-
-    function renderTable(){
-      tbody.innerHTML = "";
-      santri.forEach((s, i)=>{
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td class="border p-2">${i+1}</td>
-          <td class="border p-2">${s.nama}</td>
-          <td class="border p-2">${s.kelas}</td>
-          <td class="border p-2">
-            <button onclick="editSantri(${i})" class="bg-yellow-400 px-2 py-1 rounded">Edit</button>
-            <button onclick="deleteSantri(${i})" class="bg-red-500 text-white px-2 py-1 rounded">Hapus</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function addSantri(){
-      const nama = prompt("Nama santri:");
-      const kelas = prompt("Kelas:");
-      if(nama && kelas){
-        santri.push({nama, kelas});
-        renderTable();
-      }
-    }
-
-    function editSantri(index){
-      const nama = prompt("Nama santri:", santri[index].nama);
-      const kelas = prompt("Kelas:", santri[index].kelas);
-      if(nama && kelas){
-        santri[index] = {nama, kelas};
-        renderTable();
-      }
-    }
-
-    function deleteSantri(index){
-      if(confirm("Yakin ingin menghapus?")){
-        santri.splice(index, 1);
-        renderTable();
-      }
-    }
-
-    document.getElementById("addBtn").addEventListener("click", addSantri);
-
-    renderTable();
-  </script>
+  <script src="js/app.js"></script>
 </body>
 </html>
-
